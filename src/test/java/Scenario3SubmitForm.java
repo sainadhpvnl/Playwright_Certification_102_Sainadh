@@ -11,30 +11,18 @@ import org.junit.runner.RunWith;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 
-//@RunWith(DataProviderRunner.class)
+@RunWith(DataProviderRunner.class)
 public class Scenario3SubmitForm extends BaseTest {
-    public static void main(String[] args) {
-//    @Test
-//    @UseDataProvider(value = "getTestCapability", location = LTCapability.class)
-//    public void TestScenario3(JsonObject capability) {
+
+    @Test
+    @UseDataProvider(value = "getTestCapability", location = LTCapability.class)
+    public void TestScenario3(JsonObject capability) {
         Driver driver = null;
         Page page = null;
         try {
-//            driver = super.createConnection(capability);
-//            page = driver.getPage();
-            Playwright playwright = Playwright.create();
-            // Launch Chromium in headed mode (visible UI)
-            Browser browser = playwright.chromium().launch(
-                    new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(1000));
+            driver = super.createConnection(capability);
+            page = driver.getPage();
 
-
-            // Create a new isolated browser context
-            BrowserContext context = browser.newContext();
-
-            // Create a new page within the context
-            page = context.newPage();
-
-//                / ////////////////////////
             page.navigate(TestConfig.TEST_URL); // Navigate to the URL
             page.setViewportSize(1900, 1050);
 
@@ -46,10 +34,10 @@ public class Scenario3SubmitForm extends BaseTest {
 
             if (validationMessage.isVisible()) {
                 System.out.println("Validation message is displayed: 'Please fill out this field'");
-//                super.setTestStatus("Passed", "Validation message is displayed: 'Please fill out this field'", page);
+                super.setTestStatus("Passed", "Validation message is displayed: 'Please fill out this field'", page);
             } else {
                 System.out.println("Validation message is not displayed");
-//                super.setTestStatus("Failed", "Validation message is not displayed", page);
+                super.setTestStatus("Failed", "Validation message is not displayed", page);
             }
 
             // Entering the form details
@@ -75,22 +63,21 @@ public class Scenario3SubmitForm extends BaseTest {
             //Validating the page title
             if(page.title().equalsIgnoreCase("Selenium Grid Online | Run Selenium Test On Cloud")){
                 System.out.println("Test Passed");
-//                super.setTestStatus("Passed", "Title matched", page);
+                super.setTestStatus("Passed", "Title matched", page);
             }else{
                 System.out.println("Test Failed");
-//                super.setTestStatus("Failed", "Title not matched", page);
+                super.setTestStatus("Failed", "Title not matched", page);
             }
-            page.close();
-            browser.close();
-//            super.closeConnection(driver);
+
+            super.closeConnection(driver);
         } catch (Exception e) {
             e.printStackTrace();
             if (driver != null) {
-//                super.setTestStatus("Failed", e.getMessage(), page);
+                super.setTestStatus("Failed", e.getMessage(), page);
             }
         } finally {
             if (driver != null) {
-//                super.closeConnection(driver);
+                super.closeConnection(driver);
             }
         }
     }
