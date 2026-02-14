@@ -1,0 +1,61 @@
+---
+version: 0.1
+globalTimeout: 150
+testSuiteTimeout: 150
+testSuiteStep: 150
+
+runson: ${matrix.os}
+
+matrix:
+  os: [ "win"]
+  #  os: [ "win", "mac", "linux" ] #  , mac13, win, win11]
+  version: [ "latest" ]
+  browser: [ "Chrome", "Firefox" , "Safari" ]
+  tests: [ "@Scenario1SimpleFormDemo","@Scenario2Slider","@Scenario3SubmitForm" ]
+
+parallelism: 3
+
+runtime:
+  language: java
+  version: 11
+
+pre:
+  - npm install
+  - mvn install
+
+retryOnFailure: true
+
+maxRetries: 1
+concurrency: 2
+
+env:
+# PAT : ${{.secrets.testKey}}
+TARGET_OS: Windows_10
+
+#Dependency caching for Windows
+cachekey: '{{checksum "pom.xml"}}'
+cacheDirectories:
+  - .m2
+
+# shell: bash
+
+#post:
+#  - cat yaml/win/junit_hyperexecute_matrix_sample.yaml
+
+mergeArtifacts: true
+
+uploadArtifacts:
+  - name: Surefire-Report
+path:
+  - target/surefire-reports/**
+
+testSuites:
+  - mvn test -Dplatname=win -Dmaven.repo.local=./.m2 -DselectedTests=$tests
+#testRunnerCommand: mvn test `-Dplatname=win `-Dmaven.repo.local=./.m2 `-Dplatname=win `-Dtest=$test surefire-report:report
+#testRunnerCommand:  mvn test -Dcucumber.options="$test" -Dscenario="$test" -DOs="win 10"
+#linuxTestRunnerCommand: mvn test `-Dcucumber.options="$test"`  `-Dscenario="$test"`   `-DOs="linux"`
+#winTestRunnerCommand: mvn test `-Dcucumber.options="$test"` `-Dscenario="$test"`  `-DOs="win 10"`
+#macTestRunnerCommand: mvn test -Dcucumber.options="$test" -Dscenario="$test" -DOs="mac"
+
+#jobLabel: ['chrome', 'linux', 'low']
+jobLabel: [playwright-Junit, win, matrix]
