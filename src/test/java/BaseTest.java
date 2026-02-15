@@ -1,5 +1,3 @@
-package Base;
-
 import com.google.gson.JsonObject;
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.Page;

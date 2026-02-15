@@ -1,23 +1,20 @@
-import Base.BaseTest;
-import Base.Driver;
-import Base.LTCapability;
 import com.google.gson.JsonObject;
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.LoadState;
-import com.tngtech.java.junit.dataprovider.DataProviderRunner;
-import com.tngtech.java.junit.dataprovider.UseDataProvider;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import static org.junit.Assert.assertTrue;
 
-@RunWith(DataProviderRunner.class)
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
     public class Scenario1SimpleFormDemo extends BaseTest {
 
-        @Test
-        @UseDataProvider(value = "getTestCapability", location = LTCapability.class)
+
+@ParameterizedTest
+@MethodSource("LTCapability#getTestCapability")
         public void TestScenario1(JsonObject capability) {
             Driver driver = null;
             Page page = null;

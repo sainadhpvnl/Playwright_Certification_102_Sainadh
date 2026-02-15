@@ -1,20 +1,16 @@
-import Base.BaseTest;
-import Base.Driver;
-import Base.LTCapability;
 import com.google.gson.JsonObject;
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.BoundingBox;
-import com.tngtech.java.junit.dataprovider.DataProviderRunner;
-import com.tngtech.java.junit.dataprovider.UseDataProvider;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 
-@RunWith(DataProviderRunner.class)
+
+
 public class Scenario2Slider extends BaseTest{
 
-    @Test
-    @UseDataProvider(value="getTestCapability",location = LTCapability.class)
+@ParameterizedTest
+@MethodSource("LTCapability#getTestCapability")
     public void TestScenario2(JsonObject capability){
         Driver driver=null;
         Page page=null;

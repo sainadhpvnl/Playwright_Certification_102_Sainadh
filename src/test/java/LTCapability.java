@@ -1,16 +1,13 @@
-package Base;
-
 import com.google.gson.JsonObject;
-import com.tngtech.java.junit.dataprovider.DataProvider;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
+import java.util.stream.Stream;
 
 public class LTCapability {
 
-    @DataProvider
-    public static Object[] getTestCapability(){
+
+    public static Stream<JsonObject> getTestCapability(){
         JsonObject capabilities= new JsonObject();
         JsonObject ltOptions= new JsonObject();
 
@@ -23,10 +20,14 @@ public class LTCapability {
         String timeValue=sdf.format(new Date());
 
         capabilities.addProperty("browserName", "Chrome");
+        // Browsers allowed: `Chrome`, `MicrosoftEdge`, `pw-chromium`,
+        // `pw-firefox` and `pw-webkit`
         capabilities.addProperty("browserVersion", "latest");
         ltOptions.addProperty("platform", "Windows 10");
         ltOptions.addProperty("name", "Sainadh Lambda Test" +timeValue);
         ltOptions.addProperty("build", "Sainadh's Playwright 102 Cert run1");
+        ltOptions.addProperty("user", user);
+        ltOptions.addProperty("accessKey", accessKey);
         ltOptions.addProperty("console", true);
         ltOptions.addProperty("network", true);
         ltOptions.addProperty("visual", true);
@@ -34,12 +35,11 @@ public class LTCapability {
         ltOptions.addProperty("accessibility", true);
         ltOptions.addProperty("geoLocation", "IN");
         ltOptions.addProperty("timezone", "Kolkata");
-        ltOptions.addProperty("user", user);
-        ltOptions.addProperty("accessKey", accessKey);
+
         
         capabilities.add("LT:Options", ltOptions);
 
-        return new Object[]{capabilities};
+        return Stream.of(capabilities);
         
 
 
