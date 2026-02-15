@@ -50,6 +50,7 @@ uploadArtefacts:
   - name: Surefire-Report
 path:
   - target/surefire-reports/**
+
 testDiscovery:
   type: raw
   mode: dynamic
