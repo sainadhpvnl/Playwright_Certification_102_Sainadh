@@ -18,14 +18,16 @@ matrix:
   browser: [ "Chrome", "Firefox" , "Safari" ]
   tests: [ "@Scenario1SimpleFormDemo","@Scenario2Slider","@Scenario3SubmitForm" ]
 
+runtime:
+  language: java
+  version: 11
+
 #Dependency caching for Windows
 cachekey: '{{checksum "pom.xml"}}'
 cacheDirectories:
   - .m2
 
-runtime:
-  language: java
-  version: 11
+
 # shell: bash
 
 pre:
@@ -40,7 +42,7 @@ post:
   -
 mergeArtifacts: true
 
-uploadArtifacts:
+uploadArtefacts:
   - name: Surefire-Report
 path:
   - target/surefire-reports/**

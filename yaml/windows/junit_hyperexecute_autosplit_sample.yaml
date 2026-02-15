@@ -6,6 +6,10 @@ testSuiteStep: 150
 
 runson: win
 
+runtime:
+  language: java
+  version: 11
+
 autosplit: true
 retryOnFailure: false
 
@@ -14,7 +18,7 @@ concurrency: 3
 
 env:
 # PAT : ${{.secrets.testKey}}
-TARGET_OS: Windows 11
+TARGET_OS: Windows 10
 
 #Dependency caching for Windows
 cachekey: '{{checksum "pom.xml"}}'
@@ -25,7 +29,7 @@ cacheDirectories:
 
 pre:
   #install playwright version to be used
-  - npm install playwright@1.49.0 --save-exact
+  - npm install playwright@1.23.0 --save-exact
   #Download and install packages in the CACHE_DIR.
   #Skip Execution of the tests in the pre step
   - mvn -Dmaven.repo.local=./.m2 -Dmaven.test.skip=true clean install
@@ -35,7 +39,7 @@ post:
 
 mergeArtifacts: true
 
-uploadArtifacts:
+uploadArtefacts:
 - name: Surefire-Report
 path:
 - target/surefire-reports/**

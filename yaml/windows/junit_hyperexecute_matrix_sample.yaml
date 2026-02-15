@@ -44,7 +44,7 @@ cacheDirectories:
 
 mergeArtifacts: true
 
-uploadArtifacts:
+uploadArtefacts:
   - name: Surefire-Report
 path:
   - target/surefire-reports/**
