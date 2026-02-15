@@ -24,25 +24,25 @@ public class LTCapability {
         sdf.setTimeZone(TimeZone.getTimeZone("Asia/Kolkata"));
         String timeValue=sdf.format(new Date());
 
-        //Windows 10 Chrome
-        capabilities1.addProperty("browserName", "Chrome");
-        capabilities1.addProperty("browserVersion", "latest");
-        ltOptions1.addProperty("platform", "Windows 10");
-        ltOptions1.addProperty("name", "Sainadh's Lambda Test" +timeValue);
-        ltOptions1.addProperty("build", "Sainadh's Playwright 102 Cert run1_Hybrid_Chrome");
-        ltOptions1.addProperty("user", user);
-        ltOptions1.addProperty("accessKey", accessKey);
-        ltOptions1.addProperty("console", true);
-        ltOptions1.addProperty("network", true);
-        ltOptions1.addProperty("visual", true);
-        ltOptions1.addProperty("video", true);
-        ltOptions1.addProperty("accessibility", true);
-        ltOptions1.addProperty("geoLocation", "IN");
-        ltOptions1.addProperty("timezone", "Kolkata");
-        capabilities1.add("LT:Options", ltOptions1);
+//        //Windows 10 Chrome
+//        capabilities1.addProperty("browserName", "Chrome");
+//        capabilities1.addProperty("browserVersion", "latest");
+//        ltOptions1.addProperty("platform", "Windows 10");
+//        ltOptions1.addProperty("name", "Sainadh's Lambda Test" +timeValue);
+//        ltOptions1.addProperty("build", "Sainadh's Playwright 102 Cert run1_Hybrid_Chrome");
+//        ltOptions1.addProperty("user", user);
+//        ltOptions1.addProperty("accessKey", accessKey);
+//        ltOptions1.addProperty("console", true);
+//        ltOptions1.addProperty("network", true);
+//        ltOptions1.addProperty("visual", true);
+//        ltOptions1.addProperty("video", true);
+//        ltOptions1.addProperty("accessibility", true);
+//        ltOptions1.addProperty("geoLocation", "IN");
+//        ltOptions1.addProperty("timezone", "Kolkata");
+//        capabilities1.add("LT:Options", ltOptions1);
 
 
-        //Linux Edge
+        //Linux Firefox
         capabilities2.addProperty("browserName", "Firefox");
         capabilities2.addProperty("browserVersion", "latest");
         ltOptions2.addProperty("platform", "Linux");
