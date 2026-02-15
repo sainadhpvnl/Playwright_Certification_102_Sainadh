@@ -9,8 +9,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -20,7 +20,7 @@
         <dependency>
             <groupId>com.microsoft.playwright</groupId>
             <artifactId>playwright</artifactId>
-            <version>1.57.0</version>
+            <version>1.49.0</version>
         </dependency>
 
         <dependency>
@@ -37,11 +37,16 @@
 
         </dependency>
 
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.11</version>
+        </dependency>
 
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.25</version>
+            <version>1.7.36</version>
         </dependency>
 
 
@@ -57,21 +62,14 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.14.1</version>
                 <configuration>
-                    <source>21</source>
-                    <target>21</target>
+                    <source>11</source>
+                    <target>11</target>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.5.4</version>
-<!--                <dependencies>-->
-<!--                    <dependency>-->
-<!--                        <groupId>org.apache.maven.surefire</groupId>-->
-<!--                        <artifactId>surefire-junit47</artifactId>-->
-<!--                        <version>3.5.4</version>-->
-<!--                    </dependency>-->
-<!--                </dependencies>-->
                 <configuration>
                     <parallel>methods</parallel>
                     <threadCount>2</threadCount>
