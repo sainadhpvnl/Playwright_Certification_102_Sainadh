@@ -5,7 +5,7 @@ This covers Windows OS with chrome and firefox browsers executions
 
 Executed scenarios with multiple browsers with combination of windows and linux platforms
 
-Here are the automated list of all the scenarios with respective Lamda Test Id's :
+Here are the automated list of all the scenarios which are passed along with respective Lamda Test Id's :
 Test Scenario 1:Playwright 102 Simple Form demo :- DA-WIN-2595450-1771157877699121628OEO
 Test Scenario 2:Playwright 102 Drag and Drop Slider :-DA-WIN-2595450-1771159402270206342ZBA
 Test Scenario 2:Playwright 102 Input Form Submit :- DA-WIN-2595450-1771158096745769870RFZ
