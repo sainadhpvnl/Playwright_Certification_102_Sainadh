@@ -7,18 +7,14 @@ testSuiteStep: 150
 runson: win
 
 autosplit: true
-retryOnFailure: true
+retryOnFailure: false
 
 maxRetries: 1 
 concurrency: 2
 
 env:
 # PAT : ${{.secrets.testKey}}
-TARGET_OS: Windows_10
-
-runtime:
-  language: java
-  version: 11
+TARGET_OS: Windows 10
 
 #Dependency caching for Windows
 cachekey: '{{checksum "pom.xml"}}'
@@ -34,8 +30,8 @@ pre:
   #Skip Execution of the tests in the pre step
   - mvn -Dmaven.repo.local=./.m2 -Dmaven.test.skip=true clean install
 
-#post:
-#- cat yaml/win/junit_hyperexecute_autosplit_sample.yaml
+post:
+- cat yaml/win/junit_hyperexecute_autosplit_sample.yaml
 
 mergeArtifacts: true
 
