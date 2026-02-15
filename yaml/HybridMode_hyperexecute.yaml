@@ -12,14 +12,14 @@ concurrency: 3
 
 
 matrix:
-  os: [win]
+  os: [linux]
   browser: [ "Chrome", "Firefox"]
 
 parallelism: 3
 
 #env:
-TARGET_OS: Windows 10
-##TARGET_OS: linux
+#TARGET_OS: Windows 10
+TARGET_OS: linux
 
 runtime:
   language: java
@@ -54,8 +54,8 @@ testDiscovery:
   mode: dynamic
   command: grep -rl '@ParameterizedTest' src/test/java/TestScenarios/*.java | awk -F'/' '{print substr($NF,1,length($NF)-5)}'
 
-winTestRunnerCommand: mvn test `-Dplatname=win `-Dmaven.repo.local=./.m2 `-Dplatname=win dependency:resolve `-Dtest=$test surefire-report:report
-#linuxTestRunnerCommand: mvn test -Dplatname=linux -Dmaven.repo.local=./.m2 `-Dplatname=linux dependency:resolve -Dtest=$test surefire-report:report
+#winTestRunnerCommand: mvn test `-Dplatname=win `-Dmaven.repo.local=./.m2 `-Dplatname=win dependency:resolve `-Dtest=$test surefire-report:report
+linuxTestRunnerCommand: mvn test -Dplatname=linux -Dmaven.repo.local=./.m2 `-Dplatname=linux dependency:resolve -Dtest=$test surefire-report:report
 
 
 jobLabel: ['hybrid-mode']

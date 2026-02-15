@@ -27,9 +27,10 @@ public class LTCapability {
 //        //Windows 10 Chrome
         capabilities1.addProperty("browserName", "Chrome");
         capabilities1.addProperty("browserVersion", "latest");
-        ltOptions1.addProperty("platform", "Windows 10");
+//        ltOptions1.addProperty("platform", "Windows 10");
+        ltOptions1.addProperty("platform", "Linux");
         ltOptions1.addProperty("name", "Sainadh's Lambda Test" +timeValue);
-        ltOptions1.addProperty("build", "Sainadh's Playwright 102 Cert run1_Hybrid_Windows_2");
+        ltOptions1.addProperty("build", "Sainadh's Playwright 102 Cert run1_Hybrid_Linux");
         ltOptions1.addProperty("user", user);
         ltOptions1.addProperty("accessKey", accessKey);
         ltOptions1.addProperty("console", true);
@@ -38,7 +39,9 @@ public class LTCapability {
         ltOptions1.addProperty("video", true);
         ltOptions1.addProperty("accessibility", true);
         ltOptions1.addProperty("terminal", true);
-        ltOptions1.addProperty("geoLocation", "IN");
+        ltOptions1.addProperty("accessibility", true);
+        ltOptions1.addProperty("tunnel", true);
+        ltOptions1.addProperty("w3c", true);
         ltOptions1.addProperty("timezone", "Kolkata");
         capabilities1.add("LT:Options", ltOptions1);
 
