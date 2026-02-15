@@ -6,10 +6,13 @@ testSuiteStep: 150
 
 runson: ${matrix.os}
 
+maxRetries: 1
+retryOnFailure: true
+concurrency: 3
+
 matrix:
   os: [ "linux"]
   browser: [ "Chrome", "Firefox"]
-  tests: [ "@Scenario1SimpleFormDemo","@Scenario2Slider","@Scenario3SubmitForm" ]
 
 parallelism: 3
 
@@ -17,14 +20,17 @@ runtime:
   language: java
   version: 11
 
+shell: bash
+
+report : true
+
 pre:
-  - npm install
-  - mvn install
+  # install playwright version to be used.
+  - npm install playwright@1.23.0 --save-exact
+  # Download and install packages in the CACHE_DIR.
+  # Skip execution of the tests in the pre step
+  - mvn -Dmaven.repo.local=./.m2 -Dmaven.test.skip=true clean install
 
-retryOnFailure: true
-
-maxRetries: 1
-concurrency: 2
 
 env:
 # PAT : ${{.secrets.testKey}}
@@ -35,10 +41,8 @@ cachekey: '{{checksum "pom.xml"}}'
 cacheDirectories:
   - .m2
 
-shell: bash
-
-#post:
-#  - cat yaml/linux/junit_hyperexecute_matrix_sample.yaml
+post:
+  - cat yaml/linux/junit_hyperexecute_matrix_sample.yaml
 
 mergeArtifacts: true
 
@@ -46,14 +50,16 @@ uploadArtefacts:
   - name: Surefire-Report
 path:
   - target/surefire-reports/**
+testDiscovery:
+  type: raw
+  mode: dynamic
+  command: grep -rl '@ParameterizedTest' src/test/java/TestScenarios/*.java | awk -F'/' '{print substr($NF,1,length($NF)-5)}'
 
-testSuites:
-  - mvn test -Dplatname=linux -Dmaven.repo.local=./.m2 -Dtest=$tests
-#testRunnerCommand: mvn test `-Dplatname=win `-Dmaven.repo.local=./.m2 `-Dplatname=win `-Dtest=$test surefire-report:report
-#testRunnerCommand:  mvn test -Dcucumber.options="$test" -Dscenario="$test" -DOs="win 10"
-#linuxTestRunnerCommand: mvn test `-Dcucumber.options="$test"`  `-Dscenario="$test"`   `-DOs="linux"`
-#winTestRunnerCommand: mvn test `-Dcucumber.options="$test"` `-Dscenario="$test"`  `-DOs="win 10"`
-#macTestRunnerCommand: mvn test -Dcucumber.options="$test" -Dscenario="$test" -DOs="mac"
+#winTestRunnerCommand: mvn test `-Dplatname=win `-Dmaven.repo.local=./.m2 `-Dplatname=win dependency:resolve `-Dtest=$test surefire-report:report
+linuxTestRunnerCommand: mvn test -Dplatname=linux -Dmaven.repo.local=./.m2 `-Dplatname=linux dependency:resolve -Dtest=$test surefire-report:report
 
-#jobLabel: ['chrome', 'linux', 'low']
+
+#testSuites:
+#  - mvn test -Dplatname=linux -Dmaven.repo.local=./.m2 -Dtest=$tests
+
 jobLabel: [playwright-Junit, linux, matrix]
