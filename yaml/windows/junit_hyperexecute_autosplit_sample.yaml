@@ -10,7 +10,7 @@ autosplit: true
 retryOnFailure: false
 
 maxRetries: 1 
-concurrency: 2
+concurrency: 3
 
 env:
 # PAT : ${{.secrets.testKey}}
