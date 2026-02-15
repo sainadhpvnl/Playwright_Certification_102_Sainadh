@@ -43,7 +43,9 @@ https://www.testmuai.com/selenium-playground/
 
 Linkedin profile url - https://www.linkedin.com/in/sainadh-p-v-n-l-50593125/
 
-Note- The Submission is shared on one drive location by Persistent. The Folder that contain my submission is "".
+Note- The Submission is shared on one drive location by Persistent. The Folder that contain my submission is
+"Playwright_Certification_102_Sainadh"
+
 
 
 
