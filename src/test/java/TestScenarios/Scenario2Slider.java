@@ -6,6 +6,7 @@ import Util.TestConfig;
 import com.google.gson.JsonObject;
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.BoundingBox;
+import com.microsoft.playwright.options.LoadState;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -25,7 +26,8 @@ public class Scenario2Slider extends BaseTest {
 
             page.navigate(TestConfig.TEST_URL); //Navigate to the URL
             page.setViewportSize(1900, 1050);
-
+            page.waitForLoadState(LoadState.DOMCONTENTLOADED);
+            page.waitForLoadState(LoadState.LOAD);
             page.locator("//a[text()='Drag & Drop Sliders']").click(); //click “Drag & Drop Sliders” link
 
             Locator sliderValue=page.locator("//input[@type='range' and @value='15']");

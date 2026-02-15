@@ -12,17 +12,20 @@ concurrency: 3
 
 
 matrix:
-  os: [ "win","linux"]
-  #  os: [ "win", "mac
+  os: [ win,linux]
   browser: [ "Chrome", "Firefox"]
-  parallelism: 3
 
-env:
-TARGET_OS: Windows 10
+parallelism: 3
+
+#env:
+#TARGET_OS: Windows 10
+##TARGET_OS: linux
 
 runtime:
   language: java
   version: 11
+
+shell: bash
 
 #Dependency caching for Windows
 cachekey: '{{checksum "pom.xml"}}'
@@ -30,14 +33,12 @@ cacheDirectories:
   - .m2
 
 
-# shell: bash
-
 pre:
   #install playwright version to be used
   - npm install playwright@1.49.0 --save-exact
   #Download and install packages in the CACHE_DIR.
   #Skip Execution of the tests in the pre step
-  - mvn -Dmaven.repo.local=./.m2 -Dmaven.test.skip=false clean install
+  - mvn -Dmaven.repo.local=./.m2 -Dmaven.test.skip=true clean install
 
 report : true
 
@@ -55,7 +56,6 @@ testDiscovery:
 
 winTestRunnerCommand: mvn test `-Dplatname=win `-Dmaven.repo.local=./.m2 `-Dplatname=win dependency:resolve `-Dtest=$test surefire-report:report
 linuxTestRunnerCommand: mvn test -Dplatname=linux -Dmaven.repo.local=./.m2 `-Dplatname=linux dependency:resolve -Dtest=$test surefire-report:report
-#macTestRunnerCommand: mvn test -Dplatname=mac -Dmaven.repo.local=./.m2 `-Dplatname=mac dependency:resolve -Dtest=$test surefire-report:report
 
 
-jobLabel: [playwright-Junit, hybrid]
+jobLabel: ['hybrid-mode']

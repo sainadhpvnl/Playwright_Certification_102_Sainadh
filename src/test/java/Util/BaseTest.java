@@ -2,6 +2,7 @@ package Util;
 
 import com.google.gson.JsonObject;
 import com.microsoft.playwright.Browser;
+import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 
@@ -14,7 +15,7 @@ public class BaseTest {
             Playwright playwright = Playwright.create();
             String caps=URLEncoder.encode(cap.toString(), "utf-8");
             String cdurl="wss://cdp.lambdatest.com/playwright?capabilities="+caps;
-            Browser browser=playwright.chromium().connect(cdurl);
+            Browser browser=playwright.chromium().connect(cdurl).browserType().launch(new BrowserType.LaunchOptions().setSlowMo(1000));
             Page Page  = browser.newPage();
             return new Driver(browser,Page);
         } catch (Exception e) {

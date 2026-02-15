@@ -27,14 +27,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
             page=driver.getPage();
                 page.navigate(TestConfig.TEST_URL); //Navigate to the URL
 
-//                page.setViewportSize(1900, 1050);
+                page.setViewportSize(1900, 1050);
 
                 page.locator("//a[text()='Simple Form Demo']").click(); //Click on 'Simple Form Demo '
-
-                String currentURL = page.url();
-                assertTrue(currentURL.contains("simple-form-demo"));  //Validate that URL contains "simple-form-demo"
                 page.waitForLoadState(LoadState.DOMCONTENTLOADED);
                 page.waitForLoadState(LoadState.LOAD);
+                String currentURL = page.url();
+                assertTrue(currentURL.contains("simple-form-demo"));  //Validate that URL contains "simple-form-demo"
                 String value = "Welcome to TestMu AI";
                 Locator text= page.locator("input#user-message");
                 text.fill(value);

@@ -5,6 +5,7 @@ import Util.Driver;
 import Util.TestConfig;
 import com.google.gson.JsonObject;
 import com.microsoft.playwright.*;
+import com.microsoft.playwright.options.LoadState;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -25,7 +26,8 @@ public class Scenario3SubmitForm extends BaseTest {
 
             page.navigate(TestConfig.TEST_URL); // Navigate to the URL
             page.setViewportSize(1900, 1050);
-
+            page.waitForLoadState(LoadState.DOMCONTENTLOADED);
+            page.waitForLoadState(LoadState.LOAD);
             page.locator("//a[text()='Input Form Submit']").click(); // click “Input Form Submit” link.
 
             page.locator("//button[text()='Submit']").click(); // click “Submit” button.
