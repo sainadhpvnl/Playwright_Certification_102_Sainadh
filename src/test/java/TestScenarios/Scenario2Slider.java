@@ -1,3 +1,8 @@
+package TestScenarios;
+
+import Util.BaseTest;
+import Util.Driver;
+import Util.TestConfig;
 import com.google.gson.JsonObject;
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.BoundingBox;
@@ -7,10 +12,10 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 
 
-public class Scenario2Slider extends BaseTest{
+public class Scenario2Slider extends BaseTest {
 
 @ParameterizedTest
-@MethodSource("LTCapability#getTestCapability")
+@MethodSource("Util.LTCapability#getTestCapability")
     public void TestScenario2(JsonObject capability){
         Driver driver=null;
         Page page=null;

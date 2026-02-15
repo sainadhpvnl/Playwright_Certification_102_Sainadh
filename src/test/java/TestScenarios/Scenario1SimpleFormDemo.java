@@ -1,3 +1,7 @@
+package TestScenarios;
+import Util.BaseTest;
+import Util.Driver;
+import Util.TestConfig;
 import com.google.gson.JsonObject;
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.LoadState;
@@ -14,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 @ParameterizedTest
-@MethodSource("LTCapability#getTestCapability")
+@MethodSource("Util.LTCapability#getTestCapability")
         public void TestScenario1(JsonObject capability) {
             Driver driver = null;
             Page page = null;

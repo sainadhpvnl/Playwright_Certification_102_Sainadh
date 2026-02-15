@@ -1,3 +1,5 @@
+package Util;
+
 import com.google.gson.JsonObject;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,8 +26,8 @@ public class LTCapability {
         // `pw-firefox` and `pw-webkit`
         capabilities.addProperty("browserVersion", "latest");
         ltOptions.addProperty("platform", "Windows 10");
-        ltOptions.addProperty("name", "Sainadh Lambda Test" +timeValue);
-        ltOptions.addProperty("build", "Sainadh's Playwright 102 Cert run1");
+        ltOptions.addProperty("name", "Sainadh's Lambda Test" +timeValue);
+        ltOptions.addProperty("build", "Sainadh's Playwright 102 Cert run1_Hybrid_Check1");
         ltOptions.addProperty("user", user);
         ltOptions.addProperty("accessKey", accessKey);
         ltOptions.addProperty("console", true);

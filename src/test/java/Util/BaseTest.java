@@ -1,3 +1,5 @@
+package Util;
+
 import com.google.gson.JsonObject;
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.Page;
@@ -5,9 +7,9 @@ import com.microsoft.playwright.Playwright;
 
 import java.net.URLEncoder;
 
-public abstract class BaseTest {
+public class BaseTest {
     
-    protected Driver createConnection(JsonObject cap) throws Exception{
+    public Driver createConnection(JsonObject cap) throws Exception{
         try {
             Playwright playwright = Playwright.create();
             String caps=URLEncoder.encode(cap.toString(), "utf-8");
@@ -21,12 +23,12 @@ public abstract class BaseTest {
         }
     }
 
-    protected void closeConnection(Driver driver){
+    public void closeConnection(Driver driver){
         driver.getPage().close();
         driver.getBrowser().close();
     }
 
-    protected void setTestStatus(String status, String remark, Page page){
+    public void setTestStatus(String status, String remark, Page page){
         page.evaluate("() => {}","lambdatest_action: {\"action\": \"setTestStatus\" ,\"arguments\" : { \"status\" : \""+status + "\",\"remark\": \""+ remark+"\"}}");
     }
 }

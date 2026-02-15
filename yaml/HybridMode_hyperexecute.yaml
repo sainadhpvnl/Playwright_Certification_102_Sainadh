@@ -7,16 +7,18 @@ testSuiteStep: 150
 runson: ${matrix.os}
 autosplit: true
 maxRetries: 1
-retryOnFailure: true
+retryOnFailure: false
 concurrency: 3
-parallelism: 1
+
 
 matrix:
-  os: [ "mac","win","linux"]
-  #  os: [ "win", "mac", "linux" ] #  , mac13, win, win11]
-  version: [ "latest" ]
-  browser: [ "Chrome", "Firefox" , "Safari" ]
-  tests: [ "@Scenario1SimpleFormDemo","@Scenario2Slider","@Scenario3SubmitForm" ]
+  os: [ "win","linux"]
+  #  os: [ "win", "mac
+  browser: [ "Chrome", "Firefox"]
+  parallelism: 3
+
+env:
+TARGET_OS: Windows 10
 
 runtime:
   language: java
@@ -35,11 +37,10 @@ pre:
   - npm install playwright@1.49.0 --save-exact
   #Download and install packages in the CACHE_DIR.
   #Skip Execution of the tests in the pre step
-  - mvn -Dmaven.repo.local=./.m2 -Dmaven.test.Skip=true clean install
+  - mvn -Dmaven.repo.local=./.m2 -Dmaven.test.skip=false clean install
 
-post:
-  - cat yaml/HybridMode_hyperexecute.yaml
-  -
+report : true
+
 mergeArtifacts: true
 
 uploadArtefacts:
@@ -47,31 +48,14 @@ uploadArtefacts:
 path:
   - target/surefire-reports/**
 
-report: true
-partialReports:
-  location: target/surefire-reports/html
-  type: html
-  frameworkName: extent
-
-
-
 testDiscovery:
   type: raw
   mode: dynamic
-  command: |
-    grep 'test name' xml/testng_win11.xml | awk '{print$2}' | sed 's/name=//g' | sed 's/\x3e//g'
-  macCommand: |
-    grep 'test name' xml/testng_mac.xml | awk '{print$2}' | sed 's/name=//g' | sed 's/\x3e//g'
-  winCommand: |
-    grep 'test name' xml/testng_win.xml | awk '{print$2}' | sed 's/name=//g' | sed 's/\x3e//g'
-  linuxCommand: |
-    grep 'test name' xml/testng_linux.xml | awk '{print$2}' | sed 's/name=//g' | sed 's/\x3e//g'
+  command: grep -rl '@ParameterizedTest' src/test/java/TestScenarios/*.java | awk -F'/' '{print substr($NF,1,length($NF)-5)}'
 
-#  command: grep -r1 '@Test' src/test/java/TestScenarios/*.java | awk -F'/' '{print substr($NF,1,length($NF)-5)}'
-
-linuxTestRunnerCommand: mvn test -Dplatname=linux -Dmaven.repo.local=./.m2 dependency:resolve -DselectedTests=$tests test site surefire-report:report
-winTestRunnerCommand: mvn test `-Dplatname=win `-Dmaven.repo.local=./.m2 dependency:resolve `-DselectedTests=$tests test site surefire-report:report
-macTestRunnerCommand: mvn test -Dplatname=mac -Dmaven.repo.local=./.m2 dependency:resolve -DselectedTests=$tests test site surefire-report:report
+winTestRunnerCommand: mvn test `-Dplatname=win `-Dmaven.repo.local=./.m2 `-Dplatname=win dependency:resolve `-Dtest=$test surefire-report:report
+linuxTestRunnerCommand: mvn test -Dplatname=linux -Dmaven.repo.local=./.m2 `-Dplatname=linux dependency:resolve -Dtest=$test surefire-report:report
+#macTestRunnerCommand: mvn test -Dplatname=mac -Dmaven.repo.local=./.m2 `-Dplatname=mac dependency:resolve -Dtest=$test surefire-report:report
 
 
 jobLabel: [playwright-Junit, hybrid]

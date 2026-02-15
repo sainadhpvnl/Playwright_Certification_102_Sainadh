@@ -1,3 +1,8 @@
+package TestScenarios;
+
+import Util.BaseTest;
+import Util.Driver;
+import Util.TestConfig;
 import com.google.gson.JsonObject;
 import com.microsoft.playwright.*;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -10,7 +15,7 @@ public class Scenario3SubmitForm extends BaseTest {
 
 
 @ParameterizedTest
-@MethodSource("LTCapability#getTestCapability")
+@MethodSource("Util.LTCapability#getTestCapability")
     public void TestScenario3(JsonObject capability) {
         Driver driver = null;
         Page page = null;

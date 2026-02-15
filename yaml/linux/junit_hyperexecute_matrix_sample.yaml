@@ -50,7 +50,7 @@ path:
   - target/surefire-reports/**
 
 testSuites:
-  - mvn test -Dplatname=linux -Dmaven.repo.local=./.m2 -DselectedTests=$tests
+  - mvn test -Dplatname=linux -Dmaven.repo.local=./.m2 -Dtest=$tests
 #testRunnerCommand: mvn test `-Dplatname=win `-Dmaven.repo.local=./.m2 `-Dplatname=win `-Dtest=$test surefire-report:report
 #testRunnerCommand:  mvn test -Dcucumber.options="$test" -Dscenario="$test" -DOs="win 10"
 #linuxTestRunnerCommand: mvn test `-Dcucumber.options="$test"`  `-Dscenario="$test"`   `-DOs="linux"`
