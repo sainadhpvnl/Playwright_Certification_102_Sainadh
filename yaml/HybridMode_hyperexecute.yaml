@@ -15,8 +15,6 @@ matrix:
   os: [win]
   browser: [ "Chrome", "Firefox"]
 
-parallelism: 3
-
 #env:
 TARGET_OS: Windows 10
 ##TARGET_OS: linux
