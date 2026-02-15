@@ -37,6 +37,7 @@ public class LTCapability {
         ltOptions1.addProperty("visual", true);
         ltOptions1.addProperty("video", true);
         ltOptions1.addProperty("accessibility", true);
+        ltOptions1.addProperty("terminal", true);
         ltOptions1.addProperty("geoLocation", "IN");
         ltOptions1.addProperty("timezone", "Kolkata");
         capabilities1.add("LT:Options", ltOptions1);
