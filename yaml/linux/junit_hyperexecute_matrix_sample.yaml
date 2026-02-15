@@ -8,9 +8,7 @@ runson: ${matrix.os}
 
 matrix:
   os: [ "linux"]
-  #  os: [ "win", "mac", "linux" ] #  , mac13, win, win11]
-  version: [ "latest" ]
-  browser: [ "Chrome", "Firefox" , "Safari" ]
+  browser: [ "Chrome", "Firefox"]
   tests: [ "@Scenario1SimpleFormDemo","@Scenario2Slider","@Scenario3SubmitForm" ]
 
 parallelism: 3
@@ -37,7 +35,7 @@ cachekey: '{{checksum "pom.xml"}}'
 cacheDirectories:
   - .m2
 
-# shell: bash
+shell: bash
 
 #post:
 #  - cat yaml/linux/junit_hyperexecute_matrix_sample.yaml

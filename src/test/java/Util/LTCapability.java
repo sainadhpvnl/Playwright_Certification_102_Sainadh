@@ -29,7 +29,7 @@ public class LTCapability {
         capabilities1.addProperty("browserVersion", "latest");
         ltOptions1.addProperty("platform", "Windows 10");
         ltOptions1.addProperty("name", "Sainadh's Lambda Test" +timeValue);
-        ltOptions1.addProperty("build", "Sainadh's Playwright 102 Cert run1_Hybrid_Edge");
+        ltOptions1.addProperty("build", "Sainadh's Playwright 102 Cert run1_Hybrid_Chrome");
         ltOptions1.addProperty("user", user);
         ltOptions1.addProperty("accessKey", accessKey);
         ltOptions1.addProperty("console", true);
@@ -43,11 +43,11 @@ public class LTCapability {
 
 
         //Linux Edge
-        capabilities2.addProperty("browserName", "MicrosoftEdge");
+        capabilities2.addProperty("browserName", "Firefox");
         capabilities2.addProperty("browserVersion", "latest");
         ltOptions2.addProperty("platform", "Linux");
         ltOptions2.addProperty("name", "Sainadh's Lambda Test" +timeValue);
-        ltOptions2.addProperty("build", "Sainadh's Playwright 102 Cert run1_Hybrid_Edge");
+        ltOptions2.addProperty("build", "Sainadh's Playwright 102 Cert run1_Hybrid_Firefox");
         ltOptions2.addProperty("user", user);
         ltOptions2.addProperty("accessKey", accessKey);
         ltOptions2.addProperty("console", true);

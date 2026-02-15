@@ -26,6 +26,8 @@ cacheDirectories:
 
 shell: bash
 
+report : true
+
 pre:
   # install playwright version to be used.
   - npm install playwright@1.23.0 --save-exact
