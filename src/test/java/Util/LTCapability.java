@@ -60,9 +60,9 @@ public class LTCapability {
 //        ltOptions2.addProperty("timezone", "Kolkata");
 //        capabilities2.add("LT:Options", ltOptions2);
 
-        return new Object[]{capabilities1,capabilities2};
-        
+//        return new Object[]{capabilities1,capabilities2};
 
+        return new Object[]{capabilities1};
 
     }
     
