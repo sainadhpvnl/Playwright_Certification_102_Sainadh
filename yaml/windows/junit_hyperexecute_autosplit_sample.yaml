@@ -49,7 +49,7 @@ report : true
 testDiscovery:
   type: raw
   mode: dynamic
-  command: grep -rl '@ParameterizedTest' src/test/java | awk -F'/' '{print substr($NF,1,length($NF)-5)}'
+  command: grep -rl '@ParameterizedTest' src/test/java/TestScenarios/*.java | awk -F'/' '{print substr($NF,1,length($NF)-5)}'
 
 testRunnerCommand: mvn test `-Dplatname=win `-Dmaven.repo.local=./.m2 `-Dplatname=win `-Dtest=$test surefire-report:report
 

@@ -48,7 +48,7 @@ uploadArtefacts:
 testDiscovery:
   type: raw
   mode: dynamic
-  command: grep -rl '@ParameterizedTest' src/test/java | awk -F'/' '{print substr($NF, 1, length($NF)-5)}'
+  command: grep -rl '@ParameterizedTest' src/test/java/TestScenarios/*.java | awk -F'/' '{print substr($NF, 1, length($NF)-5)}'
 
 testRunnerCommand: mvn test `-Dplatname=linux `-Dmaven.repo.local=./.m2 `-Dplatname=linux `-Dtest=$test surefire-report:report
 
