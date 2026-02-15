@@ -1,0 +1,51 @@
+Job id-f9ecc013-cf88-474f-a287-1aa73a1fe47b
+jenkins build 44
+Job Link: https://hyperexecute.lambdatest.com/hyperexecute/task?jobId=f9ecc013-cf88-474f-a287-1aa73a1fe47b
+This covers Windows OS with chrome and firefox browsers executions
+
+Executed scenarios with multiple browsers with combination of windows and linux platforms
+
+Here are the automated list of all the scenarios with respective Lamda Test Id's :
+Test Scenario 1:Playwright 102 Simple Form demo :- DA-WIN-2595450-1771157877699121628OEO
+Test Scenario 2:Playwright 102 Drag and Drop Slider :-DA-WIN-2595450-1771159402270206342ZBA
+Test Scenario 2:Playwright 102 Input Form Submit :- DA-WIN-2595450-1771158096745769870RFZ
+
+https://automation.lambdatest.com/test?build=77908091&testID=DA-WIN-2595450-1771159402270206342ZBA
+Windows test id's
+=================================
+DA-WIN-2595450-1771157877699121628OEO
+DA-WIN-2595450-1771159402270206342ZBA
+DA-WIN-2595450-1771158096745769870RFZ
+windows job id-6d6afea6-e160-439c-9958-faa6f05509d6
+https://hyperexecute.lambdatest.com/hyperexecute/task?jobId=6d6afea6-e160-439c-9958-faa6f05509d6
+
+other Job ids-
+windows autosplit chrome  
+https://hyperexecute.lambdatest.com/hyperexecute/task?jobId=ea57c110-07d2-47c1-9c5e-f87818ead7bc
+https://hyperexecute.lambdatest.com/hyperexecute/task?jobId=afdaa271-4a79-4b1b-a913-14d78ad08edb
+https://hyperexecute.lambdatest.com/hyperexecute/task?jobId=6180a4a7-89ff-429c-8ef1-4850f470eb9f
+
+Linux test id's
+===============
+LVDKY-M5HAA-7U9DJ-TXBSG
+JPG11-21XRL-OBXSB-9TJBD
+VCB7C-YEEBE-RN8XB-ELIQQ
+linux job id's
+https://hyperexecute.lambdatest.com/hyperexecute/task?jobId=b621c38d-0788-4495-a814-9c42b6c72e38
+
+github repo 
+https://github.com/sainadhpvnl/Playwright_Certification_102_Sainadh
+
+shared github repo to admin@testmuaicertifications.com
+
+Automation URL-
+https://www.testmuai.com/selenium-playground/
+
+Linkedin profile url - https://www.linkedin.com/in/sainadh-p-v-n-l-50593125/
+
+Note- The Submission is shared on one drive location by Persistent. The Folder that contain my submission is "".
+
+
+
+
+
