@@ -30,7 +30,7 @@ public class LTCapability {
 //        ltOptions1.addProperty("platform", "Windows 10");
         ltOptions1.addProperty("platform", "Linux");
         ltOptions1.addProperty("name", "Sainadh's Lambda Test" +timeValue);
-        ltOptions1.addProperty("build", "Sainadh's Playwright 102 Cert run1_Hybrid_Linux");
+        ltOptions1.addProperty("build", "Sainadh's Playwright 102 Cert run1_Hybrid_Linux1");
         ltOptions1.addProperty("user", user);
         ltOptions1.addProperty("accessKey", accessKey);
         ltOptions1.addProperty("console", true);
