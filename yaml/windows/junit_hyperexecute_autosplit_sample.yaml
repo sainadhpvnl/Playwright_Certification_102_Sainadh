@@ -14,7 +14,7 @@ concurrency: 3
 
 env:
 # PAT : ${{.secrets.testKey}}
-TARGET_OS: Windows 10
+TARGET_OS: Windows 11
 
 #Dependency caching for Windows
 cachekey: '{{checksum "pom.xml"}}'
