@@ -27,32 +27,25 @@ public class Scenario2Slider extends BaseTest{
             Locator outputValue=page.locator("//output[@id='rangeSuccess']");
 
             //Moving Sliders on the page
-            double slidemove=0;
+            double slidemove=500;
             boolean Slidevalue=false;
             while(!Slidevalue){
                 BoundingBox boundingBox=sliderValue.boundingBox();
                 page.mouse().move(boundingBox.x+slidemove, boundingBox.y);
                 page.mouse().down();
-                slidemove +=10; //15 19 15
+                slidemove +=5;
                 page.mouse().move(boundingBox.x+slidemove, boundingBox.y);
-
                 page.mouse().up();
                 String updateOutputValue=outputValue.textContent();
                 System.out.println("==="+slidemove +"--"+updateOutputValue);
                 if(updateOutputValue.equals("95")) {
+                    System.out.println("Test Passed: Output value is correctly updated to 95");
                     Slidevalue=true;
+                } else if (updateOutputValue.equals("100")) {
+                    System.out.println("Test Failed: Output reached to "+updateOutputValue +" , but expected is 95");
+                    break;
                 }
             }
-
-            String updateOutputValue=outputValue.textContent();
-            System.out.println("Updated Output Value :"+updateOutputValue);
-
-            if(updateOutputValue.equals("95")){
-                System.out.println("Test Passed: Output value is correctly updated to 95");
-            }else{
-                System.out.println("Test Failed: Output value is "+updateOutputValue +" , but expected is 95");
-            }
-
 
             //Validating the page title
             if(page.title().equalsIgnoreCase("Selenium Grid Online | Run Selenium Test On Cloud")){
