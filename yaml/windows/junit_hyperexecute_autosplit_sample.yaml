@@ -40,9 +40,11 @@ post:
 mergeArtifacts: true
 
 uploadArtefacts:
-- name: Surefire-Report
+- name: Reports
 path:
 - target/surefire-reports/**
+
+report : true
 
 testDiscovery:
   type: raw
