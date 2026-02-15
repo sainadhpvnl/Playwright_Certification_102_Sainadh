@@ -24,7 +24,7 @@ cacheKey: '{{ checksum "pom.xml" }}'
 cacheDirectories:
   - .m2
 
-# shell: bash
+shell: bash
 
 pre:
   # install playwright version to be used.
